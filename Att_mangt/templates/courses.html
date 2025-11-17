@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Courses</h2>
+  <form method="post">
+    <input name="course_name" placeholder="Course name" required><br>
+    <select name="department_id">
+      <option value="">-- Department (optional) --</option>
+      {% for d in departments %}
+        <option value="{{ d.id }}">{{ d.department_name }}</option>
+      {% endfor %}
+    </select><br>
+    <input name="semester" placeholder="Semester"><br>
+    <input name="class_name" placeholder="Class"><br>
+    <input name="lecture_hours" placeholder="Lecture hours" type="number" min="0"><br>
+    <button type="submit">Add Course</button>
+  </form>
+
+  <h3>Existing</h3>
+  <ul>
+    {% for c in courses %}
+      <li>{{ c.course_name }} {% if c.department %} ({{ c.department.department_name }}) {% endif %}</li>
+    {% else %}
+      <li>No courses yet</li>
+    {% endfor %}
+  </ul>
+
+  <p><a href="{{ url_for('dashboard') }}">Back to dashboard</a></p>
+{% endblock %}

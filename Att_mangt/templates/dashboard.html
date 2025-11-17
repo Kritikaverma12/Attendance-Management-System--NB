@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Dashboard</h2>
+  <div class="cards">
+    <div class="card">Departments: {{ num_depts }}</div>
+    <div class="card">Courses: {{ num_courses }}</div>
+    <div class="card">Students: {{ num_students }}</div>
+    <div class="card">Attendance entries: {{ num_att }}</div>
+  </div>
+
+  <ul class="menu">
+    <li><a href="{{ url_for('departments_page') }}">Manage Departments</a></li>
+    <li><a href="{{ url_for('courses_page') }}">Manage Courses</a></li>
+    <li><a href="{{ url_for('students_page') }}">Manage Students</a></li>
+    <li><a href="{{ url_for('attendance_page') }}">Mark / View Attendance</a></li>
+  </ul>
+{% endblock %}

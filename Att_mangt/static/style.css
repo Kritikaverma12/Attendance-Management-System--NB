@@ -1,0 +1,12 @@
+body { font-family: Arial, sans-serif; background:#f6f6f6; color:#222; }
+.container { width: 1000px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 6px; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 16px; }
+header h1 { margin:0; }
+.right { font-size:14px; }
+input, select { padding:8px; width:300px; margin:6px 0; }
+button { padding:8px 12px; }
+.cards { display:flex; gap:12px; margin-bottom:16px; }
+.card { padding:12px; background:#eef; border-radius:6px; }
+.menu { list-style:none; padding:0; }
+.menu li { margin:6px 0; }
+.error { color:red; }

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Mark Attendance</h2>
+  <form method="post">
+    <select name="student_id" required>
+      <option value="">-- Student --</option>
+      {% for s in students %}
+        <option value="{{ s.id }}">{{ s.full_name }}</option>
+      {% endfor %}
+    </select><br>
+
+    <select name="course_id" required>
+      <option value="">-- Course --</option>
+      {% for c in courses %}
+        <option value="{{ c.id }}">{{ c.course_name }}</option>
+      {% endfor %}
+    </select><br>
+
+    <select name="present">
+      <option value="Present">Present</option>
+      <option value="Absent">Absent</option>
+    </select><br>
+
+    <button type="submit">Mark</button>
+  </form>
+
+  <h3>Recent Attendance</h3>
+  <table border="1" cellpadding="6">
+    <tr><th>Student</th><th>Course</th><th>Present</th><th>Date</th></tr>
+    {% for a in logs %}
+      <tr>
+        <td>{{ a.student.full_name }}</td>
+        <td>{{ a.course.course_name }}</td>
+        <td>{{ 'Yes' if a.present else 'No' }}</td>
+        <td>{{ a.updated_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="4">No attendance</td></tr>
+    {% endfor %}
+  </table>
+
+  <p><a href="{{ url_for('dashboard') }}">Back to dashboard</a></p>
+{% endblock %}

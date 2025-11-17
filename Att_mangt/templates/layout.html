@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Attendance App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Attendance Management</h1>
+      {% if session.user_name %}
+        <div class="right">Hello, {{ session.user_name }} | <a href="{{ url_for('logout') }}">Logout</a></div>
+      {% endif %}
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+    <footer>
+      <small>Built for Nuage Biztech Company</small>
+    </footer>
+  </div>
+</body>
+</html>

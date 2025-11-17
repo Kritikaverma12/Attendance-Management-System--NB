@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Students</h2>
+  <form method="post">
+    <input name="full_name" placeholder="Student name" required><br>
+
+    <select name="department_id">
+      <option value="">-- Department (optional) --</option>
+      {% for d in departments %}
+        <option value="{{ d.id }}">{{ d.department_name }}</option>
+      {% endfor %}
+    </select><br>
+
+    <select name="course_id">
+      <option value="">-- Course (optional) --</option>
+      {% for c in courses %}
+        <option value="{{ c.id }}">{{ c.course_name }}</option>
+      {% endfor %}
+    </select><br>
+
+    <input name="class_name" placeholder="Class"><br>
+
+    <button type="submit">Add Student</button>
+  </form>
+
+  <h3>Existing</h3>
+  <ul>
+    {% for s in students %}
+      <li>{{ s.full_name }} {% if s.course %}- {{ s.course.course_name }}{% endif %}</li>
+    {% else %}
+      <li>No students yet</li>
+    {% endfor %}
+  </ul>
+
+  <p><a href="{{ url_for('dashboard') }}">Back to dashboard</a></p>
+{% endblock %}
